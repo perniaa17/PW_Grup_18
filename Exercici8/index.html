@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<title>Enviar formulario con AJAX y jQuery</title>
+<body>
+  <form method="post" id="formulario" action="formulari.php">
+    Nom: <input type="text" name="nom" />
+    Email: <input type="text" name="email" />
+    Edat: <input type="number" name="edat" />
+    <input type="submit" id="btnEnviar" name="btnEnviar" value="Enviar" />
+  </form>
+<p class="respuesta"></p>
+</body>
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="js/enviar.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#formulario").bind("submit",function(){
+
+        // Capturo el boton de envio
+        var btnEnviar = $("#btnEnviar");
+
+        $.ajax({
+            type: $(this).attr("method"),
+            url: $(this).attr("action"),
+            data:$(this).serialize(),
+
+            success: function(data){
+                //Se ejecuta cuando termina la petición y esta ha sido correcta
+                $(".respuesta").html(data);
+                btnEnviar.val("Volver a enviar");
+                btnEnviar.removeAttr("disabled");
+
+            },
+            error: function(data){
+                //Se ejecuta si la peticón ha sido erronea
+                alert("Problemas al tratar de enviar el formulario");
+            }
+        });
+        //Permite cancelar el envio de formulari.php
+        return false;
+    });
+});
+</script>
+</html>

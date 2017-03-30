@@ -1,0 +1,14 @@
+
+.bg-primary a{
+color: inherit;
+text-decoration: none;
+}
+
+.form_personalizado{
+border:none !important;
+}
+.input_personalizado{
+  background-color: #f8f8f8 !important;
+  border:none !important;
+  color: #777 !important;
+}

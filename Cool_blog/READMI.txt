@@ -1,0 +1,25 @@
+Tots el .php criden a un petit .css (coolblog.css), a apart el formulari.php també crida a un validator.js, la resta son el css y js del bootstrap.
+
+Es fan servir dos taulas sql pels posts i pels usuaris. Estan les dos incloses al .zip
+
+Index.php ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Al inici faig la comprobació de si hi ha cookie, llavors comprova si está a la BD. Es pot comprobar el funcionament obrint la web al navegador pero entrant a una altra web que no sigui el index.php, llavor no s'entraria amb una sessió oberta. Espero que sigui això el que demanaves.
+
+També mostro el 10 primers posts, y un botó al final per mostrar més en cas de que hi hagi mes de 10 posts, pero no te cap funcionalitat implementada. No m'en vaig sortir amb el ajax.
+
+Login.php /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Aqui creo el parametre $_SESSION per la nova sessió y creo la cookie, tot després de comproba a la bd si es un usuari existent
+
+Post.php/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+no sé si al .sql que t'envio hi va inclòs les dades que tenia la bd, en tot cas, veuras que hi ha uns post on a la main page que no filtra el textare amb el htmlentities hi apareix un post amb un botó, pero després ja el filtro.
+
+Formulari.php ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Tinc inclòs un validator.js implementat per la validació a client. Es fa tot com demana les especificacions per poder registar-se.
+
+Userpage.php /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Tinc implementada la part opcional, a la que s'accedeix des del menu desplegable de la Navbar amb el nom de l'usuari.

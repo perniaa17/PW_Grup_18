@@ -1,0 +1,13 @@
+{
+    "name": "jpousa/todolist",
+    "type": "project",
+    "authors": [
+        {
+            "name": "jpousa",
+            "email": "tl19715@salleurl.edu"
+        }
+    ],
+    "require": {
+        "aura/router": "^3.1"
+    }
+}

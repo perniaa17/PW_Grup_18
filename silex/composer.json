@@ -1,0 +1,18 @@
+{
+    "name": "jpousa/silex",
+    "type": "project",
+    "authors": [
+        {
+            "name": "jpousa",
+            "email": "jpousa@jpousa.com"
+        }
+    ],
+    "require": {
+		"silex/silex":"~2.0"
+	},
+	"autoload":{
+		"psr-4": {
+			"SilexApp\\": "src/"
+		}
+	}
+}

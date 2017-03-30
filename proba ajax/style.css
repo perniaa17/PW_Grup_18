@@ -1,0 +1,32 @@
+/* CSS Document */
+*{
+	padding:0;
+	margin:0;
+}
+ul{
+	width:400px;
+	border:1px solid #CCC;
+	padding:10px;
+}
+
+ul li{
+	display:block;
+	list-style-type:none;
+	border:1px solid #ccc;
+	padding:2px;
+	margin-bottom:10px;
+}
+ul li span{
+	display:block;
+}
+ul li h2{
+	float:right;
+	width:28px;
+	height:28px;
+	position:relative;
+	text-align:center;
+}
+
+span.autor{
+	font-weight:bold;
+}

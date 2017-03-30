@@ -1,0 +1,7 @@
+hipopotamo
+conejo
+cabra
+leon
+pez
+rana
+pajaro
