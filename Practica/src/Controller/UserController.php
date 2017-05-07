@@ -41,10 +41,14 @@ class UserController
             // Validate
             $name = $request->get('name');
             $email = $request->get('email');
+            $password=$request->get('password');
+            $date=$request->get('birthdate');
             try {
                 $app['db']->insert('user', [
-                        'name' => $name,
-                        'email' => $email
+                        'username' => $name,
+                        'email' => $email,
+                        'password'=>$password,
+                        'birthdate'=>$date
                     ]
                 );
                 $lastInsertedId = $app['db']->fetchAssoc('SELECT id FROM user ORDER BY id DESC LIMIT 1');

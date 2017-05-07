@@ -17,7 +17,7 @@ $app->register(new Silex\Provider\AssetServiceProvider(), array(
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
         'driver' => 'pdo_mysql',
-        'dbname' => 'silexapp',
+        'dbname' => 'bd_practica',
         'user' => 'root',
         'password' => ''
     ),

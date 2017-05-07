@@ -11,6 +11,18 @@
         {% if errors.email is defined %}
             <p>{{ errors.email }}</p>
         {% endif %}
+        <label for="birthdate">Birth Date:</label><input type="date" name="birthdate">
+        {% if errors.birthdate is defined %}
+            <p>{{ errors.birthdate }}</p>
+        {% endif %}
+        <label for="password">Password:</label><input type="password" name="password">
+        {% if errors.password is defined %}
+            <p>{{ errors.password }}</p>
+        {% endif %}
+        <label for="repeat_password">Repeat Password:</label><input type="password" name="repeat_password">
+        {% if errors.password is defined %}
+            <p>{{ errors.password }}</p>
+        {% endif %}
         <input type="submit" value="Send">
         {% if errors.unexpected is defined %}
             <p>{{ errors.unexpected }}</p>
