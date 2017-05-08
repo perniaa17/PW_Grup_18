@@ -22,3 +22,12 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'password' => ''
     ),
 ));
+
+$app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
+    'http_cache.cache_dir' => __DIR__ . '/../../var/cache/',
+    'http_cache.esi' => null,
+));
+
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__ . '/../../var/log/prog.log',
+));

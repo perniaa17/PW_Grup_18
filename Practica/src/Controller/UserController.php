@@ -22,7 +22,6 @@ class UserController
                     'message' => 'User not found'
                 ]
             );
-
         } else {
             $response->setStatusCode(Response::HTTP_OK);
             $content = $app['twig']->render('user.twig', [
@@ -39,14 +38,14 @@ class UserController
         $response = new Response();
         if ($request->isMethod('POST')) {
             // Validate
-            $name = $request->get('name');
-            $email = $request->get('email');
-            $password=$request->get('password');
-            $date=$request->get('birthdate');
+            $data['name'] = $request->get('name');   //$name
+            $data['email'] = $request->get('email'); //$email
+            $password = $request->get('password');
+            $date = $request->get('birthdate');
             try {
                 $app['db']->insert('user', [
-                        'username' => $name,
-                        'email' => $email,
+                        'name' => $data['name'],
+                        'email' => $data['email'],
                         'password'=>$password,
                         'birthdate'=>$date
                     ]
@@ -54,6 +53,7 @@ class UserController
                 $lastInsertedId = $app['db']->fetchAssoc('SELECT id FROM user ORDER BY id DESC LIMIT 1');
                 $id = $lastInsertedId['id'];
                 $url = '/users/get/' . $id;
+                $app['monolog']->info(sprintf("User with id '%d' and email '%s' registered.", $id, $data['email']));
                 return new RedirectResponse($url);
             } catch (Exception $e) {
                 $response->setStatusCode(Response::HTTP_BAD_REQUEST);

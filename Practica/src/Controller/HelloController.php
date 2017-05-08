@@ -16,6 +16,9 @@ class HelloController
         $response->setStatusCode($response::HTTP_OK);
         $response->headers->set('Content-type', 'text/html');
         $response->setContent($content);
+        $response->setCache([
+            's_maxage' => 3600
+        ]);
         return $response;
     }
 }
