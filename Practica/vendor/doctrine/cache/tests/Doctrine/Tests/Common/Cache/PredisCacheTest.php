@@ -5,6 +5,7 @@ namespace Doctrine\Tests\Common\Cache;
 use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\Cache\PredisCache;
 use Predis\Client;
+use Predis\ClientInterface;
 use Predis\Connection\ConnectionException;
 
 class PredisCacheTest extends CacheTest
@@ -50,7 +51,7 @@ class PredisCacheTest extends CacheTest
      */
     public function testSetContainsFetchDelete($value)
     {
-        if (array() === $value) {
+        if ([] === $value) {
             $this->markTestIncomplete(
                 'Predis currently doesn\'t support saving empty array values. '
                 . 'See https://github.com/nrk/predis/issues/241'
@@ -67,7 +68,7 @@ class PredisCacheTest extends CacheTest
      */
     public function testUpdateExistingEntry($value)
     {
-        if (array() === $value) {
+        if ([] === $value) {
             $this->markTestIncomplete(
                 'Predis currently doesn\'t support saving empty array values. '
                 . 'See https://github.com/nrk/predis/issues/241'
@@ -79,8 +80,8 @@ class PredisCacheTest extends CacheTest
 
     public function testAllowsGenericPredisClient()
     {
-        /* @var $predisClient \Predis\ClientInterface */
-        $predisClient = $this->getMock('Predis\\ClientInterface');
+        /* @var $predisClient ClientInterface */
+        $predisClient = $this->createMock(ClientInterface::class);
 
         $this->assertInstanceOf('Doctrine\\Common\\Cache\\PredisCache', new PredisCache($predisClient));
     }

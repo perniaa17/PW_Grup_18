@@ -38,7 +38,7 @@ class Connection extends PDOConnection implements \Doctrine\DBAL\Driver\Connecti
     }
 
     /**
-     * @override
+     * {@inheritDoc}
      */
     public function lastInsertId($name = null)
     {

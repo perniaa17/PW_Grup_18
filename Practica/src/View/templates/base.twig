@@ -1,21 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     {% block head %}
-        <link rel="stylesheet" type="text/css" href="{{ asset('/styles.css', 'css') }}">
-        <title>{% block title %}{% endblock %} - My Webpage</title>
-    {% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Pwgram">
+        <meta name="author" content="grup18">
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('styles.css', 'css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <title>{% block title %}{% endblock %}Pwgram Grup 18</title>
+    {% endblock head%}
 </head>
+
 <body>
-<div id="content">{% block content %}{% endblock %}</div>
-<div id="footer">
-    {% block footer %}
-        &copy; Copyright 2017
-    {% endblock %}
-</div>
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <nav class="nav nav-masthead">
+                            <a class="nav-link active" href="home">Home</a>
+                            <a class="nav-link" href="register">Register</a>
+                            <a class="nav-link" href="contact">Contact</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <div id="content">{% block content %}{% endblock %}</div>
+
+                <div class="mastfoot">
+                    <div class="inner">
+                        {% block footer %}
+                            <p class="text">Marc Pernia, Eloy Lopez, Javier Pousa </p>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 {% block scripts %}
     <script src="{{ asset('/app.js', 'js') }}" type="text/javascript" charset="utf-8"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
 {% endblock %}
 </body>
 </html>
-

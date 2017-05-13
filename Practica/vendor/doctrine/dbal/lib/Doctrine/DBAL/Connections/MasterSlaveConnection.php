@@ -151,7 +151,7 @@ class MasterSlaveConnection extends Connection
         // If we have a connection open, and this is not an explicit connection
         // change request, then abort right here, because we are already done.
         // This prevents writes to the slave in case of "keepSlave" option enabled.
-        if ($this->_conn && !$requestedConnectionChange) {
+        if (isset($this->_conn) && $this->_conn && !$requestedConnectionChange) {
             return false;
         }
 
@@ -162,7 +162,7 @@ class MasterSlaveConnection extends Connection
             $forceMasterAsSlave = true;
         }
 
-        if ($this->connections[$connectionName]) {
+        if (isset($this->connections[$connectionName]) && $this->connections[$connectionName]) {
             $this->_conn = $this->connections[$connectionName];
 
             if ($forceMasterAsSlave && ! $this->keepSlave) {
@@ -173,13 +173,9 @@ class MasterSlaveConnection extends Connection
         }
 
         if ($connectionName === 'master') {
-            // Set slave connection to master to avoid invalid reads
-            if ($this->connections['slave'] && ! $this->keepSlave) {
-                unset($this->connections['slave']);
-            }
-
             $this->connections['master'] = $this->_conn = $this->connectTo($connectionName);
 
+            // Set slave connection to master to avoid invalid reads
             if ( ! $this->keepSlave) {
                 $this->connections['slave'] = $this->connections['master'];
             }
@@ -368,8 +364,8 @@ class MasterSlaveConnection extends Connection
         if ($logger) {
             $logger->startQuery($args[0]);
         }
-
-        $statement = call_user_func_array(array($this->_conn, 'query'), $args);
+        
+        $statement = $this->_conn->query(...$args);
 
         if ($logger) {
             $logger->stopQuery();

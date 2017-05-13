@@ -1,9 +1,12 @@
 <?php
+$app->get('/', 'SilexApp\Controller\HomeController::home');
+$app->get('/home', 'SilexApp\Controller\HomeController::home');
+$app->get('/signin', 'SilexApp\Controller\HomeController::signIn');
 $app->get('/hello/{name}', 'SilexApp\Controller\HelloController::indexAction');
 
 // USER
 $app->get('/users/get/{id}', 'SilexApp\Controller\UserController::getAction');
-$app->match('/users/add', 'SilexApp\Controller\UserController::postAction');
+$app->match('/register', 'SilexApp\Controller\UserController::postAction');
 
 //SESSION
 $before = function(Request $request, Application $app){
@@ -17,5 +20,5 @@ $before = function(Request $request, Application $app){
         return $response;
     }
 };
-$app->get('/', 'SilexApp\Controller\BaseController::indexAction');
+//$app->get('/', 'SilexApp\Controller\BaseController::indexAction');
 $app->get('/admin','SilexApp\Controller\BaseController::adminAction');
