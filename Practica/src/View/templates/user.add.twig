@@ -2,26 +2,30 @@
 {% block title %}Register - {% endblock %}
 {% block content %}
     <h1>Add user</h1>
-    <form action="/users/add" METHOD="POST">
-        <label for="name">Name:</label><input type="text" name="name">
+    <form action="/register" METHOD="POST">
+        <p><label for="name">Name:</label><input type="text" name="name"></p>
         {% if errors.name is defined %}
             <p>{{ errors.name }}</p>
         {% endif %}
-        <label for="email">Email:</label><input type="email" name="email">
+        <p> <label for="email">Email:</label><input type="email" name="email"></p>
         {% if errors.email is defined %}
             <p>{{ errors.email }}</p>
         {% endif %}
-        <label for="birthdate">Birth Date:</label><input type="date" name="birthdate">
+        <p><label for="birthdate">Birth Date:</label><input type="date" name="birthdate"></p>
         {% if errors.birthdate is defined %}
             <p>{{ errors.birthdate }}</p>
         {% endif %}
-        <label for="password">Password:</label><input type="password" name="password">
+        <p>  <label for="password">Password:</label><input type="password" name="password"></p>
         {% if errors.password is defined %}
             <p>{{ errors.password }}</p>
         {% endif %}
-        <label for="repeat_password">Repeat Password:</label><input type="password" name="repeat_password">
+        <p>  <label for="repeat_password">Repeat Password:</label><input type="password" name="repeat_password"></p>
         {% if errors.password is defined %}
-            <p>{{ errors.password }}</p>
+            {{ errors.password }}
+        {% endif %}
+        <p><label for="image">Insert image</label><input type="file" name="image"> </p>
+        {% if errors.image is defined %}
+            {{ errors.image }}
         {% endif %}
         <input type="submit" value="Send">
         {% if errors.unexpected is defined %}

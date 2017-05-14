@@ -44,17 +44,14 @@ class UserController
             $date = $request->get('birthdate');
             try {
                 $app['db']->insert('user', [
-                        'name' => $data['name'],
+                        'username' => $data['name'],
                         'email' => $data['email'],
-                        'password'=>$password,
-                        'birthdate'=>$date
+                        'birthdate'=>$date,
+                        'password'=>md5($password)
+
                     ]
                 );
-                $lastInsertedId = $app['db']->fetchAssoc('SELECT id FROM user ORDER BY id DESC LIMIT 1');
-                $id = $lastInsertedId['id'];
-                $url = '/users/get/' . $id;
-                $app['monolog']->info(sprintf("User with id '%d' and email '%s' registered.", $id, $data['email']));
-                return new RedirectResponse($url);
+
             } catch (Exception $e) {
                 $response->setStatusCode(Response::HTTP_BAD_REQUEST);
                 $content = $app['twig']->render('user.add.twig', [
