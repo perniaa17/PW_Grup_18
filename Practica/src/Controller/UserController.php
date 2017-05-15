@@ -42,12 +42,16 @@ class UserController
             $data['email'] = $request->get('email'); //$email
             $password = $request->get('password');
             $date = $request->get('birthdate');
+            $imag=$request->get('image');
+
             try {
                 $app['db']->insert('user', [
                         'username' => $data['name'],
                         'email' => $data['email'],
                         'birthdate'=>$date,
-                        'password'=>md5($password)
+                        'password'=>md5($password),
+                        'img_path'=>$imag,
+                        'active'=>0
 
                     ]
                 );
