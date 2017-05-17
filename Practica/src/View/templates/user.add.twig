@@ -1,35 +1,59 @@
 {% extends "base.twig" %}
 {% block title %}Register - {% endblock %}
 {% block content %}
-    <h1>Add user</h1>
-    <form action="/register" METHOD="POST">
-        <p><label for="name">Name:</label><input type="text" name="name"></p>
-        {% if errors.name is defined %}
-            <p>{{ errors.name }}</p>
-        {% endif %}
-        <p> <label for="email">Email:</label><input type="email" name="email"></p>
-        {% if errors.email is defined %}
-            <p>{{ errors.email }}</p>
-        {% endif %}
-        <p><label for="birthdate">Birth Date:</label><input type="date" name="birthdate"></p>
-        {% if errors.birthdate is defined %}
-            <p>{{ errors.birthdate }}</p>
-        {% endif %}
-        <p>  <label for="password">Password:</label><input type="password" name="password"></p>
-        {% if errors.password is defined %}
-            <p>{{ errors.password }}</p>
-        {% endif %}
-        <p>  <label for="repeat_password">Repeat Password:</label><input type="password" name="repeat_password"></p>
-        {% if errors.password is defined %}
-            {{ errors.password }}
-        {% endif %}
-        <p><label for="image">Insert image</label><input type="file" name="image"> </p>
-        {% if errors.image is defined %}
-            {{ errors.image }}
-        {% endif %}
-        <input type="submit" value="Send">
-        {% if errors.unexpected is defined %}
-            <p>{{ errors.unexpected }}</p>
-        {% endif %}
-    </form>
+<h1>Add user</h1>
+
+            <form action="/users/add" METHOD="POST">
+                <br />
+                <label for="name">Name: </label>
+                <input type="text" name="name"><br />
+                {% if errors.name is defined %}
+                    <p>{{ errors.name }}</p>
+                {% endif %}
+
+                <br />
+                <label for="email">Email: </label>
+                <input type="email" name="email"><br />
+                {% if errors.email is defined %}
+                    <p>{{ errors.email }}</p>
+                {% endif %}
+
+                <br />
+                <label for="birthdate">Birth Date: </label>
+                <input type="date" name="birthdate"><br />
+                {% if errors.birthdate is defined %}
+                    <p>{{ errors.birthdate }}</p>
+                {% endif %}
+
+                <br />
+                <label for="password">Password: </label>
+                <input type="password" name="password"><br />
+                {% if errors.password is defined %}
+                    <p>{{ errors.password }}</p>
+                {% endif %}
+
+                <br />
+                <label for="repeat_password">Repeat Password: </label>
+                <input type="password" name="repeat_password"><br />
+                {% if errors.password is defined %}
+                    <p>{{ errors.password }}</p>
+                {% endif %}
+
+                <br />
+                <label for="image">Profile image:</label>
+                <span class="btn btn_custom btn-file">
+                    <input type="file" name="image">
+                </span><br />
+                {% if errors.file is defined %}
+                    <p>{{ errors.file }}</p>
+                {% endif %}
+
+                <br />
+                <input class="btn btn-primary btn-lg" type="submit" value="Send"><br />
+                {% if errors.unexpected is defined %}
+                    <p>{{ errors.unexpected }}</p>
+                {% endif %}
+            </form>
+
+
 {% endblock %}

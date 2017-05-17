@@ -53,7 +53,9 @@ body {
     margin-right: auto;
     margin-left: auto;
 }
-
+.btn_custom{
+  cursor: none !important;
+}
 /* Padding for spacing */
 .inner {
     padding: 2rem;
