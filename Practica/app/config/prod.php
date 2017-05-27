@@ -1,4 +1,6 @@
 <?php
+use Silex\Provider\FormServiceProvider;
+
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../../src/View/templates',
@@ -19,7 +21,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'driver' => 'pdo_mysql',
         'dbname' => 'bd_practica',
         'user' => 'root',
-        'password' => ''
+        'password' => '1234'
     ),
 ));
 
@@ -31,3 +33,5 @@ $app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => __DIR__ . '/../../var/log/prog.log',
 ));
+
+$app->register(new FormServiceProvider());

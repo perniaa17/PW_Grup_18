@@ -15,10 +15,13 @@
         "silex/web-profiler": "~2.0",
         "twig/twig": "^2.3",
         "symfony/asset": "^3.2",
-        "symfony/twig-bridge": "^3.2",
+        "symfony/twig-bridge": "3.4.x-dev",
         "doctrine/dbal": "~2.2",
         "monolog/monolog": "^2.0@dev",
-        "twbs/bootstrap": "^3.3@dev"
+        "twbs/bootstrap": "^3.3@dev",
+        "symfony/form": "3.4.x-dev",
+        "symfony/validator": "3.4.x-dev",
+        "symfony/config": "3.4.x-dev"
     },
     "autoload" : {
         "psr-4": {
